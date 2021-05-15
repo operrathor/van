@@ -1,6 +1,6 @@
 {
   "name": "@operrathor/van",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Applies arbitrary theme from Gogh to your default GNOME Terminal and Tilix profiles",
   "bin": {
     "van": "./index.mjs"

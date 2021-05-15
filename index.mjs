@@ -7,13 +7,13 @@ const applySettings = settings => {
     exec('gsettings get org.gnome.Terminal.ProfilesList default | sed s/\\\'//g', (error, stdout, stderr) => {
         const profile = stdout.trim()
         const gsettingsPath = `org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${profile}/`
-        settings.forEach((value, key) => exec(`gsettings set ${gsettingsPath} ${key} "${value}"`))
+        Object.entries(settings).forEach(([key, value]) => exec(`gsettings set ${gsettingsPath} ${key} "${value}"`))
         console.log(`Applied settings to GNOME Terminal profile ${profile}.`)
     });
     exec('gsettings get com.gexperts.Tilix.ProfilesList default | sed s/\\\'//g', (error, stdout, stderr) => {
         const profile = stdout.trim()
         const gsettingsPath = `com.gexperts.Tilix.Profile:/com/gexperts/Tilix/profiles/${profile}/`
-        settings.forEach((value, key) => exec(`gsettings set ${gsettingsPath} ${key} "${value}"`))
+        Object.entries(settings).forEach(([key, value]) => exec(`gsettings set ${gsettingsPath} ${key} "${value}"`))
         console.log(`Applied settings to Tilix profile ${profile}.`)
     });
 }
@@ -34,15 +34,15 @@ https.get('https://raw.githubusercontent.com/Mayccoll/Gogh/master/data/themes.js
     res.on('end', () => {
         const theme = JSON.parse(body)['themes'].filter(theme => theme['name'].toLowerCase() == themeName.toLowerCase())[0]
         if (!theme) {
-            console.log(`Couldn't find theme '${themeName}'.`)
+            console.error(`Couldn't find theme '${themeName}'.`)
             process.exit(1)
         }
         const { name, background, foreground, ...colors } = theme
-        const settings = new Map([
-            ['background-color', background],
-            ['foreground-color', foreground],
-            ['palette', `[${Object.values(colors).map(value => value).join(', ')}]`]
-        ])
+        const settings = {
+            'background-color': background,
+            'foreground-color': foreground,
+            'palette': `[${Object.values(colors).map(value => value).join(', ')}]`
+        }
         applySettings(settings)
     });
 })
