@@ -1,0 +1,21 @@
+{
+  "name": "@operrathor/van",
+  "version": "1.0.0",
+  "description": "Applies arbitrary theme from Gogh to your default GNOME Terminal and Tilix profiles",
+  "bin": {
+    "van": "./index.mjs"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operrathor/van.git"
+  },
+  "author": "Thomas Oberroither",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/operrathor/van/issues"
+  },
+  "homepage": "https://github.com/operrathor/van#readme"
+}
