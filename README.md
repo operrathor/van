@@ -7,7 +7,8 @@ Applies arbitrary theme from [Gogh](https://mayccoll.github.io/Gogh/) to your de
 ## Install
 
 ```sh
-npm install -g --registry=https://npm.pkg.github.com/ @operrathor/van
+npm login --registry=https://npm.pkg.github.com
+npm install -g --registry=https://npm.pkg.github.com @operrathor/van
 ```
 
 ## Usage
