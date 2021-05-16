@@ -37,11 +37,11 @@ https.get('https://raw.githubusercontent.com/Mayccoll/Gogh/master/data/themes.js
             console.error(`Couldn't find theme '${themeName}'.`)
             process.exit(1)
         }
-        const { name, background, foreground, ...colors } = theme
+        const { name, background, foreground, cursorColor, ...colors } = theme
         const settings = {
             'background-color': background,
             'foreground-color': foreground,
-            'palette': `[${Object.values(colors).map(value => value).join(', ')}]`
+            'palette': `[${Object.values(colors).map(value => `'${value}'`).join(', ')}]`
         }
         applySettings(settings)
     });
