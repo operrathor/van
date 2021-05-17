@@ -41,7 +41,8 @@ https.get('https://raw.githubusercontent.com/Mayccoll/Gogh/master/data/themes.js
         const settings = {
             'background-color': background,
             'foreground-color': foreground,
-            'palette': `[${Object.values(colors).map(value => `'${value}'`).join(', ')}]`
+            'palette': `[${Object.values(colors).map(value => `'${value}'`).join(', ')}]`,
+            'use-theme-colors': 'false'
         }
         applySettings(settings)
     });
